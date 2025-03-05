@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Display Available Books</title>
+</head>
+<body>
+<h2>Available Books</h2>
+<button id="displayBooks">Display Books</button>
+<div id="availableBooks"></div>
+
+<script>
+    let books = JSON.parse(localStorage.getItem('books')) || [];
+
+    document.getElementById('displayBooks').addEventListener('click', function() {
+        let availableBooksDiv = document.getElementById('availableBooks');
+        availableBooksDiv.innerHTML = '';
+
+        books.forEach(book => {
+            if (book.available) {
+                let div = document.createElement('div');
+                div.innerHTML = `Title: ${book.title}, Author: ${book.author}`;
+                availableBooksDiv.appendChild(div);
+            }
+        });
+    });
+</script>
+</body>
+</html>

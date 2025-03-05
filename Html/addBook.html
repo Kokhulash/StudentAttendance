@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Add Book</title>
+</head>
+<body>
+<h2>Add New Book</h2>
+<div class="form-container">
+    <form id="addBookForm">
+        <label for="bookTitle">Book Title:</label>
+        <input type="text" id="bookTitle" required>
+        <label for="bookAuthor">Book Author:</label>
+        <input type="text" id="bookAuthor" required>
+        <button type="submit">Add Book</button>
+    </form>
+</div>
+
+<script>
+    let books = JSON.parse(localStorage.getItem('books')) || [];
+
+    document.getElementById('addBookForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        let bookTitle = document.getElementById('bookTitle').value;
+        let bookAuthor = document.getElementById('bookAuthor').value;
+
+        books.push({title: bookTitle, author: bookAuthor, available: true});
+        localStorage.setItem('books', JSON.stringify(books));
+
+        alert('Book added successfully!');
+        document.getElementById('addBookForm').reset();
+    });
+</script>
+</body>
+</html>

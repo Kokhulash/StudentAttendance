@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Student</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h2>Delete Student</h2>
+<form id="deleteStudentForm">
+    <label for="deleteStudentID">Student ID:</label>
+    <input type="text" id="deleteStudentID" required>
+    <button type="submit">Delete Student</button>
+</form>
+
+<script>
+    let students = JSON.parse(localStorage.getItem('students')) || [];
+
+    document.getElementById('deleteStudentForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        let deleteStudentID = document.getElementById('deleteStudentID').value;
+
+        let studentIndex = students.findIndex(s => s.id === deleteStudentID);
+
+        if (studentIndex !== -1) {
+            let issuedBooks = JSON.parse(localStorage.getItem('issuedBooks')) || [];
+            let hasIssuedBooks = issuedBooks.some(ib => ib.studentID === deleteStudentID);
+
+            if (hasIssuedBooks) {
+                alert('Cannot delete student with issued books. Please return all books first.');
+            } else {
+                students.splice(studentIndex, 1);
+                localStorage.setItem('students', JSON.stringify(students));
+
+                alert('Student deleted successfully!');
+                document.getElementById('deleteStudentForm').reset();
+            }
+        } else {
+            alert('Student not found.');
+        }
+    });
+</script>
+</body>
+</html>

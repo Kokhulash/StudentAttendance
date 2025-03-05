@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Delete Book</title>
+</head>
+<body>
+<h2>Delete Book</h2>
+<form id="deleteBookForm">
+    <label for="deleteBookTitle">Book Title:</label>
+    <input type="text" id="deleteBookTitle" required>
+    <button type="submit">Delete Book</button>
+</form>
+
+<script>
+    let books = JSON.parse(localStorage.getItem('books')) || [];
+
+    document.getElementById('deleteBookForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        let deleteBookTitle = document.getElementById('deleteBookTitle').value;
+
+        books = books.filter(book => book.title !== deleteBookTitle);
+        localStorage.setItem('books', JSON.stringify(books));
+
+        alert('Book deleted successfully!');
+        document.getElementById('deleteBookForm').reset();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Issue Book</title>
+</head>
+<body>
+<h2>Issue Book</h2>
+<div class="form-container">
+    <form id="issueBookForm">
+        <label for="issueStudentID">Student ID:</label>
+        <input type="text" id="issueStudentID" required>
+        <label for="issueBookTitle">Book Title:</label>
+        <input type="text" id="issueBookTitle" required>
+        <button type="submit">Issue Book</button>
+    </form>
+</div>
+
+
+<script>
+    let students = JSON.parse(localStorage.getItem('students')) || [];
+    let books = JSON.parse(localStorage.getItem('books')) || [];
+    let issuedBooks = JSON.parse(localStorage.getItem('issuedBooks')) || [];
+
+    document.getElementById('issueBookForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        let issueStudentID = document.getElementById('issueStudentID').value;
+        let issueBookTitle = document.getElementById('issueBookTitle').value;
+
+        let student = students.find(s => s.id === issueStudentID);
+        let book = books.find(b => b.title === issueBookTitle);
+
+        if (student && book && book.available) {
+            book.available = false;
+            issuedBooks.push({ studentID: issueStudentID, bookTitle: issueBookTitle });
+            localStorage.setItem('books', JSON.stringify(books));
+            localStorage.setItem('issuedBooks', JSON.stringify(issuedBooks));
+
+            alert('Book issued successfully!');
+        } else {
+            alert('Student or book not found, or book is already issued.');
+        }
+
+        document.getElementById('issueBookForm').reset();
+    });
+</script>
+</body>
+</html>

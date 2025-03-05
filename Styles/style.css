@@ -1,0 +1,213 @@
+.super-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    height: 90px;
+}
+
+.super-header h1 {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+}
+
+.sidebar {
+    position: fixed;
+    width: 200px;
+    height: calc(100vh - 60px);
+    background-color: #f1f1f1;
+    padding: 20px;
+    top: 100px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.sidebar a:hover{
+    background-color: #ccc;
+}
+
+.home a:hover{
+    background-color: #007bff;
+}
+
+.form-container{
+    margin-left: -600px;
+}
+
+iframe {
+    margin-left: 220px;
+    margin-top: 60px;
+    padding: 20px;
+    width: calc(100% - 220px);
+    height: calc(100vh - 120px);
+}
+
+.content-wrapper {
+    margin-top: 60px;
+    padding-left: 220px;
+}
+
+@media screen and (max-width: 700px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        top: 60px;
+    }
+    iframe {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 60px;
+    }
+    .content-wrapper {
+        padding-left: 0;
+    }
+}
+
+
+.sidebar {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background-color: #f1f1f1;
+    padding: 20px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.sidebar a:hover {
+    background-color: #ccc;
+}
+
+iframe {
+    margin-left: 220px;
+    padding: 20px;
+}
+
+@media screen and (max-width: 700px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    iframe {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 300px;
+    margin: auto;
+}
+
+form label {
+    margin-bottom: 5px;
+}
+
+form input[type="text"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+button[type="submit"], button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover, button:hover {
+    background-color: #0056b3;
+}
+
+button[type="submit"]:active, button:active {
+    transform: scale(0.95);
+}
+
+.display-info {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 80%;
+    margin: auto;
+}
+
+.display-info div {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ccc;
+}
+
+.display-info div:last-child {
+    border-bottom: none;
+}
+
+#studentDetails,
+#availableBooks,
+#issuedBooksDetails{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 300px;
+    margin: 30px auto;
+}
+
+#studentDetails:hover,
+#availableBooks:hover,
+#issuedBooksDetails:hover{
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+

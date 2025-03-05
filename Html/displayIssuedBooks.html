@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Display Issued Books</title>
+</head>
+<body>
+<h2>Issued Books</h2>
+<button id="displayIssuedBooks">Display Issued Books</button>
+<div id="issuedBooksDetails"></div>
+
+<script>
+    let issuedBooks = JSON.parse(localStorage.getItem('issuedBooks')) || [];
+    let students = JSON.parse(localStorage.getItem('students')) || [];
+    let books = JSON.parse(localStorage.getItem('books')) || [];
+
+    document.getElementById('displayIssuedBooks').addEventListener('click', function() {
+        let issuedBooksDiv = document.getElementById('issuedBooksDetails');
+        issuedBooksDiv.innerHTML = '';
+
+        issuedBooks.forEach(issuedBook => {
+            let student = students.find(s => s.id === issuedBook.studentID);
+            let book = books.find(b => b.title === issuedBook.bookTitle);
+
+            if (student && book) {
+                let div = document.createElement('div');
+                div.innerHTML = `Student Name: ${student.name}<br> Student ID: ${student.id}<br> Book Title: ${book.title}<br> Book Author: ${book.author}<br><br>`;
+                issuedBooksDiv.appendChild(div);
+            }
+        });
+    });
+</script>
+</body>
+</html>
