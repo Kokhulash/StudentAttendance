@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Styles/style.css">
+    <title>Add Student</title>
+</head>
+<body>
+<h2>Add New Student</h2>
+<div class="form-container">
+    <form id="addStudentForm">
+        <label for="studentName">Student Name:</label>
+        <input type="text" id="studentName" required>
+        <label for="studentID">Student ID:</label>
+        <input type="text" id="studentID" required>
+        <button type="submit">Add Student</button>
+    </form>
+</div>
+
+
+<script>
+    let students = JSON.parse(localStorage.getItem('students')) || [];
+
+    document.getElementById('addStudentForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        let studentName = document.getElementById('studentName').value;
+        let studentID = document.getElementById('studentID').value;
+
+        students.push({ name: studentName, id: studentID });
+        localStorage.setItem('students', JSON.stringify(students));
+
+        alert('Student added successfully!');
+        document.getElementById('addStudentForm').reset();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="../Styles/style.css">
+</head>
+<body>
+<div class="sidebar">
+    <header class="super-header">
+        <img src="../Assets/lib-logo.jpg" alt="Library Logo" class="logo">
+        <h1><a href="index.html" class="home">Library Management System</a></h1>
+    </header>
+    <a href="addStudent.html" target="mainFrame">Add Student</a>
+    <a href="addBook.html" target="mainFrame">Add Book</a>
+    <a href="issueBook.html" target="mainFrame">Issue Book</a>
+    <a href="returnBook.html" target="mainFrame">Return Book</a>
+    <a href="displayStudentDetails.html" target="mainFrame">Display Student Details</a>
+    <a href="displayAvailableBooks.html" target="mainFrame">Display Available Books</a>
+    <a href="displayIssuedBooks.html" target="mainFrame">Display Issued Books</a>
+    <a href="deleteStudent.html" target="mainFrame">Delete Student</a>
+    <a href="deleteBook.html" target="mainFrame">Delete Book</a>
+</div>
+<div class="content-wrapper">
+    <iframe id="mainFrame" name="mainFrame" src="addStudent.html" frameborder="0" width="100%" height="100%"></iframe>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
